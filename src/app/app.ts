@@ -83,6 +83,4 @@ export class App implements OnInit {
 
     return numeroSecreto;
   }
-
-  
 }
