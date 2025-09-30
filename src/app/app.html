@@ -4,9 +4,18 @@
     border: solid 2px;
     border-radius: 5px;
   }
+
+  #fundo {
+    background-color: #a446e2;
+  }
+
+  #adivinhar{
+    background-color: #d7b4ea;
+    border-style: none;
+  }
 </style>
 
-<div class="container d-flex flex-column justify-content-center align-items-center h-100">
+<div id="fundo" class="container d-flex flex-column justify-content-center align-items-center h-100">
   <h1>Jogo de Adivinhação</h1>
 
   <section class="mt-5">
@@ -22,29 +31,31 @@
   </section>
 
   <main id="area-jogo" class="row row-cols-3 g-3 align-items-center rounded text-center p-5 mt-5">
-    <label class="display-1">{{ dicaNumeroMaiorQue }}></label>
+    <label class="display-2 mt-0 mb-4">{{ dicaNumeroMaiorQue }}></label>
 
-    <div class="d-flex flex-column gap-2">
+    <div class="d-flex flex-column gap-2 mt-0">
       <input
         [disabled]="!dificuldadeSelecionada || jogoEstaFinalizado"
         [(ngModel)]="numeroDigitado"
+        id = "adivinhar"
         class="display-1 text-center rounded"
         type="number"
         min="1"
         max="100"
       />
-
-      <button
-        [disabled]="!dificuldadeSelecionada || jogoEstaFinalizado"
-        (click)="adivinhar()"
-        class="btn btn-primary"
-      >
-        Adivinhar
-      </button>
-      <button (click)="reiniciar()" class="btn btn-success">Reiniciar</button>
+      <div class="d-flex gap-2 justify-content-center">
+        <button
+          [disabled]="!dificuldadeSelecionada || jogoEstaFinalizado"
+          (click)="adivinhar()"
+          class="btn btn-primary"
+          >
+          Adivinhar
+          </button>
+        <button (click)="reiniciar()" class="btn btn-success">Reiniciar</button>
+      </div>
     </div>
 
-    <label class="display-1"><{{ dicaNumeroMenorQue }}</label>
+    <label class="display-1 mt-0 mb-4"><{{ dicaNumeroMenorQue }}</label>
   </main>
 
   @if (dificuldadeSelecionada) {
